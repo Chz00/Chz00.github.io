@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
     <title>Ryan Chuang</title>
 </head>
 <body>
@@ -13,23 +13,39 @@
     <h2>About Me</h2>
     <p>I like to draw, 3d model, and boulder</p>
 
-    <h2>Education</h2>
+    <h2 class="accordion" onclick="toggleSection('education')">
+        Education <span class="arrow" id="education-arrow">▼</span>
+    </h2>
+
+    <div class="content" id="education">
     <p><strong>Simon Fraser University </strong></p>
     <p>School of Interactive Arts + Technology</p>
+    </div>
 
-      <h2>Skills</h2>
-    <ul>
-        <li>3D Modeling</li>
-        <li>Drawing</li>
-        <li>HTML</li>
-    </ul>
+      <h2 class="accordion" onclick="toggleSection('skills')">
+        Skills <span class="arrow" id="skills-arrow">▼</span>
+    </h2>
 
-    <h2>Experience</h2>
+    <div class="content" id="skills">
+        <ul>
+            <li>3D Modeling</li>
+            <li>Drawing</li>
+            <li>HTML</li>
+        </ul>
+    </div>
+
+    <h2 class="accordion" onclick="toggleSection('experience')">
+        Experience <span class="arrow" id="experience-arrow">▼</span>
+    </h2>
+
+    <div class="content" id="experience">
     <p><strong>My First Project</strong></p>
     <p>Stuff</p>
+    </div>
 
     <h2>Contact</h2>
     <p>Email: Chzryan@gmail.com</p>
     <p>GitHub: <a href="https://github.com/Chz00">github.com/Chz00</a></p>
+    <link rel="stylesheet" href="style.css">
 </body>
 </html>
