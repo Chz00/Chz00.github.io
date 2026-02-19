@@ -92,3 +92,7 @@ svg {
 rect {
     cursor: pointer;
 }
+
+.view-container {
+    margin-left: 15px;
+}

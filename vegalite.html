@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Vega-lite</title>
+</head>
+<body>
+    <div class="view-container">
+        
+        <h1>1. Global Sales by Genre and Platform</h1>
+        
+        <div class="chart-item">
+            <h2>Question 1: Which platform sells the most action games?</h2>
+            <p>This chart shows which platforms the most games of the Action genre.</p>
+            <div id="view"></div>
+        </div>
+
+        <div class="chart-item">
+            <h2>Question 2: RPG Sales: Nintendo vs. PlayStation</h2>
+            <p>Comparing the two giants of the gaming world across their handheld and home consoles.</p>
+            <div id="view2"></div>
+        </div>
+
+        <h1>2. Sales Over Time by Platform and Genre</h1>
+        
+        <div class="chart-item">
+            <h2>Question 1: Strategy Genre Performance</h2>
+            <p>A look at whether Strategy games have maintained their niche or declined over time.</p>
+            <div id="view3"></div>
+        </div>
+
+        <div class="chart-item">
+            <h2>Question 2: Shooter Genre Performance</h2>
+            <p>Visualizing the massive growth trajectory of Shooter games in the global market.</p>
+            <div id="view4"></div>
+        </div>
+
+        <h1>3. Regional Sales vs. Platform</h1>
+        
+        <div class="chart-item">
+            <h2>Question 1: Xbox: Europe vs. North America</h2>
+            <p>Tracking how the Xbox brand performs across its two primary Western markets.</p>
+            <div id="view5"></div>
+        </div>
+
+        <div class="chart-item">
+            <h2>Question 2: Regional Sales Balance</h2>
+            <p>This stacked bar graph shows how each console has sold by regional sales.</p>
+            <div id="view6"></div>
+        </div>
+
+        <h1>4. Tell Us a Visual Story</h1>
+        
+        <div class="chart-item">
+            <h2>Story 1: The Handheld vs. Home Console War</h2>
+            <p>An area chart showing the changes of handheld gaming market share over the years.</p>
+            <div id="view7"></div>
+        </div>
+
+        <div class="chart-item">
+            <h2>Story 2: Cultural Tastes: Japan vs. North America</h2>
+            <p>A scatter plot identifying genres where Japanese and American players have vastly different preferences.</p>
+            <div id="view8"></div>
+        </div>
+
+    </div>
+
+    <script src="vegalite.js"></script>
+</body>
+</html>
