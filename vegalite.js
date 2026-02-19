@@ -40,7 +40,7 @@ async function init() {
     .encode(
       vl.x().fieldN("Company").title("Manufacturer"),
       vl.y().fieldQ("RPG_Total").title("Total RPG Sales (Millions)"),
-      vl.color().fieldN("Company").scale({range: ["#E60012", "#003087"]})
+      vl.color().fieldN("Company").scale({range: ["#e74c3c", "#2c3e50"]})
     )
     .width(600).height(400).toSpec();
 
@@ -58,7 +58,7 @@ async function init() {
     .encode(
       vl.x().fieldO("Year").title("Year"),
       vl.y().fieldQ("YearlySales").title("Global Strategy Sales"),
-      vl.color().value("#27ae60")
+      vl.color().value("#e74c3c")
     )
     .width(600).height(400).toSpec();
 
@@ -73,7 +73,7 @@ async function init() {
     .encode(
       vl.x().fieldO("Year").title("Year"),
       vl.y().fieldQ("YearlySales").title("Global Shooter Sales"),
-      vl.color().value("#2980b9")
+      vl.color().value("#2c3e50")
     )
     .width(600).height(400).toSpec();
 
@@ -92,7 +92,7 @@ async function init() {
     .encode(
       vl.x().fieldO("Year").title("Year"),
       vl.y().fieldQ("TotalRegional").title("Sales (Millions)"),
-      vl.color().fieldN("Region")
+      vl.color().fieldN("Region").scale({range: ["#2c3e50", "#e74c3c"]})
     )
     .width(600).height(400).toSpec();
 
@@ -124,7 +124,7 @@ async function init() {
     .encode(
       vl.x().fieldO("Year").title("Year"),
       vl.y().fieldQ("TypeTotal").stack("normalize").title("Market Share %"),
-      vl.color().fieldN("Type").scale({range: ["#f1c40f", "#34495e"]})
+      vl.color().fieldN("Type").scale({range: ["#e74c3c", "#2c3e50"]})
     )
     .width(600).height(400).toSpec();
 

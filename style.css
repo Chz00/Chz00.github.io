@@ -94,5 +94,32 @@ rect {
 }
 
 .view-container {
-    margin-left: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.chart-item {
+    background: white;
+    padding: 20px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center; 
+}
+
+.chart-item h2 {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #e74c3c;
+}
+
+.chart-item p {
+    color: #444444;
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.vega-embed {
+    display: inline-block !important;
 }
