@@ -12,6 +12,10 @@
 <body>
     <h1>Ryan Chuang</h1>
     <p>SIAT Student</p>
+    <a href="portfolio.html">
+    View Portfolio
+    </a>
+
     <a href="visualizations.html" target="_blank">
     View Visualizations
     </a>
@@ -26,8 +30,14 @@
 
 
     <h2>About Me</h2>
-    <p>I like to draw, 3d model, and boulder</p>
-
+    <div class="box">
+        <p>I am a third-year Interactive Arts and Technology student at Simon Fraser University specializing in 3d modeling, animation, and character-driven storytelling. <br>My work blends drawing, design, and narrative and I believe that compelling characters are the foundation of any memorable story, and that belief shapes every <br> creative decision I make.</p>
+        <p>Trained in industry-standard tools like Maya and self-taught in Blender, I bring both technical and personal curiosity to my craft.</p>
+    </div>
+    <figure class="full">
+        <div class="ph square" style="max-width:360px">Voltorb low-poly model<br>images/voltorb.jpg<img src="imgs/voltorb.webp" alt="Low-poly Voltorb modeled in Blender" onerror="this.remove()"></div>
+        <figcaption>Low-poly Voltorb, Blender. This is the first thing I ever made in Blender. <br>It was supposed to be a simple low polygon Pokemon called Voltorb. <br> I didn't end up finishing it and adding colours but still look back at it <br> fondly due to how expressive it still turned out.</figcaption>
+    </figure>
     <h2 class="accordion" onclick="toggleSection('education')">
         Education <span class="arrow" id="education-arrow">▼</span>
     </h2>
@@ -46,16 +56,9 @@
             <li>3D Modeling</li>
             <li>Drawing</li>
             <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
         </ul>
-    </div>
-
-    <h2 class="accordion" onclick="toggleSection('experience')">
-        Experience <span class="arrow" id="experience-arrow">▼</span>
-    </h2>
-
-    <div class="content" id="experience">
-    <p><strong>My First Project</strong></p>
-    <p>Stuff</p>
     </div>
 
     <h2>Contact</h2>
