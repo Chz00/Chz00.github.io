@@ -3,20 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Charts coded with SVG and Vega-Lite for IAT355: Data Visualization at Simon Fraser University.">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Visualizations</title>
+    <style>
+        /* Keeps the fixed-size charts from forcing sideways scrolling on phones */
+        .chart-item { overflow-x: auto; }
+        #chart, #tree { max-width: 100%; height: auto; }
+    </style>
+    <title>Data Visualization | Ryan Chuang</title>
 </head>
 <body>
-    <h1>Pokémon Card Sales</h1>
-    <p>Sales from 2015 to 2024</p>
+<div class="page">
+    <div class="nav"><a href="index.html">Home</a><a href="portfolio.html">Portfolio</a></div>
 
-    <svg id="chart" width="900" height="400"></svg>
-    
-    <h1>Tree</h1>
-    <p>Tree Drawn Using SVGs</p>
+    <h1>Data Visualization</h1>
+    <p class="lede">Charts coded from scratch with SVG and Vega-Lite. Made for IAT355: Data Visualization.</p>
 
-    <svg id="tree" width="900" height="400"></svg>
-    
-    <script src="vis.js"></script>
+    <ul class="stats">
+        <li><strong>Course:</strong> IAT355: Data Visualization, Simon Fraser University</li>
+        <li><strong>Tools:</strong> JavaScript, SVG, D3, Vega-Lite</li>
+        <li><strong>Data:</strong> Video Game Sales Dataset</li>
+    </ul>
+
+    <h2>How These Were Made</h2>
+    <div class="box">
+        <p>Everything on this page was written in code rather than drawn in a chart tool. Each chart is built in the browser from HTML and JavaScript, so every bar, point and colour comes from a decision I wrote down.</p>
+        <p>The work moved through two stages in the course. First I drew charts by hand with raw SVG to learn what a chart actually is underneath: shapes placed on a grid. Then I switched to Vega-Lite, which describes a chart as data, transformations and encodings, and let me answer real questions about a dataset much faster.</p>
+    </div>
+
+    <h2>Part 1: Charts Drawn With SVG</h2>
+    <div class="box">
+        <p>For the bar chart, the values live in a plain JavaScript array. A loop goes through the array and creates one SVG <code>rect</code> per year. The height of each bar is the value divided by the largest value, multiplied by the maximum bar height in pixels, and the bar is placed so it sits on the baseline. Text labels for the year and value are created in the same loop, and mouse listeners darken a bar when you hover over it.</p>
+        <p>The tree is a warm-up in the same spirit: a trunk, four overlapping circles for the leaves, a strip of ground and a row of grass, all placed by coordinates.</p>
+    </div>
+
+    <div class="chart-item">
+        <h2>Pokémon Card Sales, 2015 to 2024</h2>
+        <p>A bar chart drawn shape by shape from an array of yearly values. Hover over a bar to highlight it.</p>
+        <svg id="chart" width="900" height="400" viewBox="0 0 900 400" role="img" aria-label="Bar chart of Pokémon card sales from 2015 to 2024"></svg>
+        <figure style="max-width:520px;margin:20px auto 0">
+            <div class="ph tall">Bar chart code<br>imgs/SVG1.webp<img src="imgs/SVG1.webp" alt="Code that builds the SVG bar chart" onerror="this.remove()"></div>
+            <figcaption>The code behind the bar chart (vis.js). The loop scales each value to a bar height, creates the <code>rect</code>, and adds the labels and hover colour change.</figcaption>
+        </figure>
+    </div>
+
+    <div class="chart-item">
+        <h2>Tree</h2>
+        <p>A Tree Drawn Only With SVG Rectangles and Circles.</p>
+        <svg id="tree" width="900" height="400" viewBox="0 0 900 400" role="img" aria-label="Tree drawn with SVG shapes"></svg>
+        <figure style="max-width:520px;margin:20px auto 0">
+            <div class="ph tall">Tree code<br>imgs/SVG2.webp<img src="imgs/SVG2.webp" alt="Code that builds the SVG tree" onerror="this.remove()"></div>
+            <figcaption>The code behind the tree (vis.js). Each part is a <code>rect</code> or <code>circle</code> with its position, size and colour set by attributes, then added to the SVG.</figcaption>
+        </figure>
+    </div>
+
+    <h2>Part 2: Charts made with Vega-Lite</h2>
+    <div class="box">
+        <p>These eight charts all use one dataset of video game sales, with global sales and sales for North America, Europe, Japan and other regions, in millions. The script loads the CSV with D3, then builds each chart with the Vega-Lite JavaScript API and renders it with Vega-Embed.</p>
+        <p>Each chart starts from a question, such as which platform sells the most Action games. To answer it I filter the rows I need, group them (by platform, year or genre) and add up the sales, then map the results to position and colour. A few charts needed extra steps. The Nintendo against PlayStation chart uses a calculated field to sort each platform into a manufacturer, and the regional charts fold the separate sales columns into rows so regions can be compared on one axis. The time-based charts are limited to 2016 and earlier. Red and dark blue are used throughout to match the rest of this site.</p>
+    </div>
+
+        <figure style="margin:0 0 20px">
+            <div class="ph ">Vega-Lite Code<br>imgs/VegaLite.webp<img src="imgs/VegaLite.webp" alt="Vega-Lite code for the first chart" onerror="this.remove()"></div>
+            <figcaption>Part of vegalite.js showing the first chart. Each one filters the data, groups and sums it, then maps fields to the axes and colour before the chart is rendered.</figcaption>
+        </figure>
+
+    <h2>Global Sales by Genre and Platform</h2>
+    <div class="view-container">
+        <div class="chart-item">
+            <h2>Which Platform Sells The Most Action Games?</h2>
+            <p>This chart shows which platforms sold the most games of the Action genre.</p>
+            <div id="view"></div>
+        </div>
+        <div class="chart-item">
+            <h2>How Do RPG Sales On Nintendo Platforms Compare To RPG Sales On PlayStation Platforms?</h2>
+            <p>Comparing sales of the RPG genre of the two giants of console gaming.</p>
+            <div id="view2"></div>
+        </div>
+    </div>
+
+    <h2>Sales Over Time By Platform and Genre</h2>
+    <div class="view-container">
+        <div class="chart-item">
+            <h2>Has The Strategy Genre Remained a Consistent Performer Over The Years, Or Is It Experiencing A Steady Decline In The Console Market?</h2>
+            <p>A look at whether Strategy games have maintained their niche or declined over time.</p>
+            <div id="view3"></div>
+        </div>
+        <div class="chart-item">
+            <h2>Has The Shooter Game Genre Remained A Consistent Performer Over The Years, Or Is It Experiencing A Steady Decline In The Console Market?</h2>
+            <p>Visualizing the trajectory of Shooter games in the global market.</p>
+            <div id="view4"></div>
+        </div>
+    </div>
+
+    <h2>Regional Sales and Platform</h2>
+    <div class="view-container">
+        <div class="chart-item">
+            <h2>How Do The Sales Of The Xbox Brand In Europe Compare To Its Sales In North America?</h2>
+            <p>Tracking how the Xbox series of consoles performed across its two primary Western markets.</p>
+            <div id="view5"></div>
+        </div>
+        <div class="chart-item">
+            <h2>Which Platform Has The Most Balanced Sales Distribution Across All Four Regions?</h2>
+            <p>This stacked bar graph shows how each console has sold by regional sales.</p>
+            <div id="view6"></div>
+        </div>
+    </div>
+
+    <h2>A Visual Story</h2>
+    <div class="view-container">
+        <div class="chart-item">
+            <h2>How Popular Are Gandheld Consoles Compared To Home Consoles?</h2>
+            <p>An area chart showing the changes of handheld gaming market share over the years.</p>
+            <div id="view7"></div>
+        </div>
+        <div class="chart-item">
+            <h2>How Do Sales Differ Between America and Japan?</h2>
+            <p>A scatter plot identifying genres where Japanese and American players have vastly different preferences.</p>
+            <div id="view8"></div>
+        </div>
+    </div>
+
+    <footer>Made by Ryan Chuang for IAT355: Data Visualization, Interactive Arts and Technology, Simon Fraser University.</footer>
+</div>
+
+<script src="vis.js"></script>
+<script src="vegalite.js"></script>
 </body>
 </html>
